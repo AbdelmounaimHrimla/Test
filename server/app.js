@@ -2,12 +2,19 @@ const express = require('express');
 const app = express();
 const graphqlHTTP = require('express-graphql');
 const graphql = require('graphql');
-const { GraphQLObjectType, GraphQLList, GraphQLInt, GraphQLSchema } = graphql;
+const { GraphQLObjectType, GraphQLSchema } = graphql;
 const vehicules = require('./models/vehicules');
+const modules = require('./models/modules');
+const marques = require('./models/marque');
 const RootQuery = new GraphQLObjectType({
     name : 'RootQuery',
     fields : {
-    	vehicules : vehicules.vehicules
+        vehicules : vehicules.vehicules,
+        vehicule : vehicules.vehicule,
+        module : modules.module,
+        modules : modules.modules,
+        marque : marques.marque,
+        marques : marques.marques
     }
 });
 
