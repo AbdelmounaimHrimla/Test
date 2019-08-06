@@ -1,0 +1,40 @@
+.vehicule {
+    //background: #DDD;
+    margin : 0 auto;
+    max-width: 800px;
+    width: 100%;
+   
+}
+
+.header-vehicule {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    margin-top: 10px;
+}
+
+.title-vehicule{
+    color : rgba(#2ecc71, 0.7);
+}
+.btn-back {
+    text-decoration: none;
+    background: #2196F3;
+    color: #FFF;
+    padding: 10px;
+}
+.content-vehicule {
+   margin-top: 15px;
+}
+.content-vehicule table {
+    margin-bottom: 15px;
+}
+.btn-delete {
+    border : none;
+    padding: 10px 20px;
+    font: 500 14px/14px Tahoma;
+    letter-spacing: 1px;
+    background: #e74c3c;
+    color : #FFF;
+    margin:0 2px;
+    cursor: pointer;
+}

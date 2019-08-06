@@ -1,0 +1,42 @@
+.myHome {
+  margin: 0 auto;
+  max-width: 800px;
+  width: 100%;
+}
+
+.inside-myHome {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.user-myHome {
+  align-self: center;
+  border: none;
+  color: #4cd137;
+  font: 600 15px/15px Tahoma;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.user-myHome:hover {
+  text-decoration: underline;
+}
+
+.content-myHome {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.card {
+  background: #FFF;
+  padding: 8px;
+  box-shadow: 0 0 2px 2px #E4E4E4;
+  font: 500 16px/16px Tahoma;
+}
+
+.title-myHome {
+  color: rgba(46, 204, 113, 0.7);
+}

@@ -1,6 +1,7 @@
 const connection = require('./connect.js');
 const MarquesType = require('./marque');
 const ModulesType = require('./modules');
+const EtatVehicule = require('./etatVehicule');
 const graphql = require('graphql');
 const {
 
@@ -56,16 +57,39 @@ VehiculesType = new GraphQLObjectType({
                     )
                 } 
             },
+            etatVehicule : {
+                type : EtatVehicule,
+                resolve(parent, args){
+                    return new Promise(
+                        function(resolve, reject){
+                            var selectEtatVehicule = "SELECT * FROM vehicules INNER JOIN etatvehicule ON vehicules.etatvehiculeId = etatvehicule.id WHERE vehicules.id = " + parent.id;
+                            connection.query(selectEtatVehicule, parent.id, function(error, result){
+                                if(error){
+                                    return reject(error);
+                                } else {
+                                    return resolve(result[0]);
+                                }
+                            })
+                        }
+                    )
+                }
+            },
             kilometrage : {type : GraphQLFloat}
         })
 })
 
 module.exports.vehicules = {
     type : GraphQLList(VehiculesType),
+    // args : {
+    //     first : {type : GraphQLInt},
+    //     offset : {type : GraphQLInt}
+    // },
     resolve(parent, args) {
         return new Promise(
             function(resolve, reject){
-                var selectVehicules = "SELECT * FROM vehicules";
+                // var first = args.first;
+                // var offset = args.offset;
+                var selectVehicules = "SELECT * FROM vehicules"; //LIMIT ? OFFSET ?, first, offset, [first, offset]
                 connection.query(selectVehicules, function(error, result){
                     if(error) {
                         return reject(error);
@@ -80,7 +104,7 @@ module.exports.vehicules = {
 }
 
 module.exports.vehicule = {
-    type : GraphQLList(VehiculesType),
+    type : VehiculesType,
     args : {
         id : {type : GraphQLInt}
     },
@@ -88,13 +112,13 @@ module.exports.vehicule = {
         return new Promise(
             function(resolve, reject){
                 var id = args.id;
-                var selectVehicules = "SELECT * FROM vehicules where id = " + id;
-                connection.query(selectVehicules, id, function(error, result){
+                var selectVehicule = "SELECT * FROM vehicules where id = " + id;
+                connection.query(selectVehicule, id, function(error, result){
                     if(error) {
                         return reject(error);
                     } else {
                         console.log(result);
-                        return resolve(result);
+                        return resolve(result[0]);
                     }
                 });
             }   

@@ -1,0 +1,65 @@
+.vehicules {
+    //background: #DDD;
+    margin : 0 auto;
+    max-width: 800px;
+    width: 100%;
+   
+}
+
+.header-vehicules {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    margin-top: 10px;
+}
+
+.title-vehicules{
+    color : rgba(#2ecc71, 0.7);
+}
+.btn-new {
+    text-decoration: none;
+    background: #2196F3;
+    color: #FFF;
+    padding: 10px;
+}
+.content-vehicules {
+   margin-top: 15px;
+}
+
+.table-vehicules{
+    width: 100%;
+}
+.table-vehicules thead{
+    background: #2ecc71;
+}
+.table-vehicules thead th{
+    padding : 2px 0;
+}
+
+.table-vehicules tbody{
+    background: #efeeee;
+    color: #000;
+    font: 500 16px/16px Tahoma;
+}
+
+.table-vehicules tbody tr td {
+    text-align: center;
+    padding: 5px 0;
+}
+.btn-edit,
+.btn-delete,
+.btn-show {
+    color: #FFF;
+    font: 500 16px/16px Tahoma;
+    padding: 0 10px;
+    text-decoration: none;
+    margin-right: 5px;
+}
+.btn-show{background: #2196F3;}
+.btn-edit{background: #2ecc71;;}
+.btn-delete{background: #F44336;;}
+
+
+
+
+

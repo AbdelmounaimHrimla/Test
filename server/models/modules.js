@@ -88,3 +88,26 @@ module.exports = ModulesType;
          )
      }
  }
+
+ module.exports.oneModule = {
+    type : GraphQLList(ModulesType),
+    args : {
+        id : {type : GraphQLInt}
+    },
+     resolve(parent, args) {
+         return new Promise(
+             function(resolve, reject){
+                 var id = args.id;
+                 var selectModule = "SELECT * FROM modules where marqueId = " +id;
+                 connection.query(selectModule, id, function(error, result){
+                     if(error) {
+                        return reject(error);
+                     } else {
+                         console.log(result);
+                         return resolve(result);
+                     }
+                 });
+             }   
+         )
+     }
+ }
