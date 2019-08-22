@@ -15,7 +15,7 @@ const {
 
 
 
-const ModulesType = new GraphQLObjectType({
+module.exports.modulesType = new GraphQLObjectType({
 	name : "Modules",
 	fields : () => ({
 			id : {type : GraphQLID},
@@ -44,11 +44,10 @@ const ModulesType = new GraphQLObjectType({
             },
 		})
 });
-module.exports = ModulesType;
 
 
  module.exports.module = {
-    type : ModulesType,
+    type : this.modulesType,
      args : {
          id : {type : GraphQLInt}
      },
@@ -71,7 +70,7 @@ module.exports = ModulesType;
  }
 
  module.exports.modules = {
-    type : GraphQLList(ModulesType),
+    type : GraphQLList(this.modulesType),
      resolve(parent, args) {
          return new Promise(
              function(resolve, reject){
@@ -90,7 +89,7 @@ module.exports = ModulesType;
  }
 
  module.exports.oneModule = {
-    type : GraphQLList(ModulesType),
+    type : GraphQLList(this.modulesType),
     args : {
         id : {type : GraphQLInt}
     },

@@ -28,6 +28,7 @@ const VEHICULE_QUERY = gql`
 `;
 
 class Vehicule extends Component {
+
     render() {
         let {id} = this.props.match.params;
         id = parseInt(id);

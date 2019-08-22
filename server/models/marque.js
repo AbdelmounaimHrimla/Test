@@ -1,5 +1,6 @@
  const connection = require('./connect.js');
  const graphql = require('graphql');
+ const modules = require('./modules');
 const {
 
 GraphQLID,
@@ -18,11 +19,11 @@ GraphQLID,
             id : {type : GraphQLID},
             libelle : {type : GraphQLString},
             module : {
-                type : GraphQLList(MarquesType),
+                type : modules.modulesType,
                 resolve(parent, args){
                     return new Promise(
                         function(resolve, reject){
-                            var selectModules = "SELECT * FROM modules WHERE marqueId = "+parent.id;
+                            var selectModules = "SELECT * FROM  marques INNER JOIN modules ON marques.id = modules.marqueId WHERE marques.id = "+parent.id;
                             connection.query(selectModules, parent.id, function(error, result){
                                 if(error){
                                     return reject(error);

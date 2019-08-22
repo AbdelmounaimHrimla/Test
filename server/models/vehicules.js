@@ -89,7 +89,7 @@ module.exports.vehicules = {
             function(resolve, reject){
                 // var first = args.first;
                 // var offset = args.offset;
-                var selectVehicules = "SELECT * FROM vehicules"; //LIMIT ? OFFSET ?, first, offset, [first, offset]
+                var selectVehicules = "SELECT * FROM vehicules"; // LIMIT ? OFFSET ?, first, offset;[first, offset], 
                 connection.query(selectVehicules, function(error, result){
                     if(error) {
                         return reject(error);
